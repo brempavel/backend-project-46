@@ -1,16 +1,20 @@
 #!/usr/bin/env node
 
-import { program } from 'commander';
+import { Command } from 'commander';
 import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
 
-const genDiff = (data1, data2) => {
+export const genDiff = (filepath1, filepath2) => {
+  const data1 = JSON.parse(fs.readFileSync(filepath1, 'utf-8'));
+  const data2 = JSON.parse(fs.readFileSync(filepath2, 'utf-8'));
+
   const keys1 = Object.keys(data1);
   const keys2 = Object.keys(data2);
   const keys = _.sortBy(_.union(keys1, keys2));
 
-  const hasProperty = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
+  const hasProperty = (obj, prop) =>
+    Object.prototype.hasOwnProperty.call(obj, prop);
   const rawResult = keys.map((key) => {
     if (hasProperty(data1, key) && hasProperty(data2, key)) {
       if (data1[key] === data2[key]) {
@@ -64,8 +68,8 @@ const genDiff = (data1, data2) => {
   }, '');
   return `{\n${result}}`;
 };
-
-export default function gendiff() {
+export const gendiff = () => {
+  const program = new Command();
   program
     .name('gendiff')
     .description('Compares two configuration files and shows a difference.')
@@ -77,10 +81,8 @@ export default function gendiff() {
       const cwd = process.cwd();
       const filepath1 = path.resolve(cwd, path1);
       const filepath2 = path.resolve(cwd, path2);
-      const data1 = JSON.parse(fs.readFileSync(filepath1, 'utf-8'));
-      const data2 = JSON.parse(fs.readFileSync(filepath2, 'utf-8'));
-
-      console.log(genDiff(data1, data2));
+  
+      console.log(genDiff(filepath1, filepath2));
     });
   program.parse();
 }
