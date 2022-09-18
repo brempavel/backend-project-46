@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
+import genDiff from '../src/index.js'
 
 export const genDiff = (filepath1, filepath2) => {
   const data1 = JSON.parse(fs.readFileSync(filepath1, 'utf-8'));
