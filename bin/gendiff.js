@@ -47,20 +47,20 @@ const genDiff = (data1, data2) => {
     switch (string.type) {
       case 'added':
         acc += `+ ${string.name}: ${string.value}\n`;
-        return acc;
+        break;
       case 'removed':
         acc += `- ${string.name}: ${string.value}\n`;
-        return acc;
+        break;
       case 'changed':
         acc += `- ${string.name}: ${string.value1}\n+ ${string.name}: ${string.value2}\n`;
-        return acc;
+        break;
       case 'unchanged':
         acc += `  ${string.name}: ${string.value}\n`;
-        return acc;
+        break;
       default:
         break;
     }
-    return '';
+    return acc;
   }, '');
   return `{\n${result}}`;
 };
