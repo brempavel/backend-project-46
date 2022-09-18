@@ -9,8 +9,7 @@ export const genDiff = (filepath1, filepath2) => {
   const keys2 = Object.keys(data2);
   const keys = _.sortBy(_.union(keys1, keys2));
 
-  const hasProperty = (obj, prop) =>
-    Object.prototype.hasOwnProperty.call(obj, prop);
+  const hasProperty = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
   const rawResult = keys.map((key) => {
     if (hasProperty(data1, key) && hasProperty(data2, key)) {
       if (data1[key] === data2[key]) {

@@ -1,6 +1,7 @@
-import { genDiff } from '../src';
-import path from 'path';
+import { test, expect } from '@jest/globals';
 import { fileURLToPath } from 'url';
+import path from 'path';
+import { genDiff } from '../src';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,7 +17,5 @@ test('plain JSON', () => {
 + timeout: 20
 + verbose: true
 }`;
-  expect(
-    genDiff(getPath('file1.json'), getPath('file2.json'))
-  ).toEqual(result);
+  expect(genDiff(getPath('file1.json'), getPath('file2.json'))).toEqual(result);
 });
