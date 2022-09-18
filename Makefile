@@ -7,3 +7,5 @@ lint:
 link:
 	npm link
 setup: install publish
+test:
+	npm test
