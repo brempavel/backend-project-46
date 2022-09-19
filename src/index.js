@@ -45,16 +45,16 @@ export default (filepath1, filepath2) => {
   const result = rawResult.reduce((acc, string) => {
     switch (string.type) {
       case 'added':
-        acc += `+ ${string.name}: ${string.value}\n`;
+        acc += `  + ${string.name}: ${string.value}\n`;
         break;
       case 'removed':
-        acc += `- ${string.name}: ${string.value}\n`;
+        acc += `  - ${string.name}: ${string.value}\n`;
         break;
       case 'changed':
-        acc += `- ${string.name}: ${string.value1}\n+ ${string.name}: ${string.value2}\n`;
+        acc += `  - ${string.name}: ${string.value1}\n  + ${string.name}: ${string.value2}\n`;
         break;
       case 'unchanged':
-        acc += `  ${string.name}: ${string.value}\n`;
+        acc += `    ${string.name}: ${string.value}\n`;
         break;
       default:
         break;
