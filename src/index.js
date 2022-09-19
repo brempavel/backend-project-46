@@ -33,14 +33,11 @@ export default (filepath1, filepath2) => {
         value: data2[key],
       };
     }
-    if (!hasProperty(data2, key)) {
-      return {
-        name: key,
-        type: 'removed',
-        value: data1[key],
-      };
-    }
-    return '';
+    return {
+      name: key,
+      type: 'removed',
+      value: data1[key],
+    };
   });
   const result = rawResult.reduce((acc, string) => {
     switch (string.type) {
