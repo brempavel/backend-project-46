@@ -1,7 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 
-export const genDiff = (filepath1, filepath2) => {
+export default (filepath1, filepath2) => {
   const data1 = JSON.parse(fs.readFileSync(filepath1, 'utf-8'));
   const data2 = JSON.parse(fs.readFileSync(filepath2, 'utf-8'));
 
