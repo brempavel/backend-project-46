@@ -5,9 +5,7 @@ export default (filepath1, filepath2) => {
   const data1 = JSON.parse(fs.readFileSync(filepath1, 'utf-8'));
   const data2 = JSON.parse(fs.readFileSync(filepath2, 'utf-8'));
 
-  const keys1 = Object.keys(data1);
-  const keys2 = Object.keys(data2);
-  const keys = _.sortBy(_.union(keys1, keys2));
+  const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
 
   const hasProperty = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
   const rawResult = keys.map((key) => {
