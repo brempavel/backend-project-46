@@ -10,4 +10,4 @@ setup: install publish
 test:
 	npm test
 test-coverage:
-	npm test -- -coverage --all
+	npm test -- -coverage --all --coverageProvider=v8
