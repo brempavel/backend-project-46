@@ -39,9 +39,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Test & publish code coverage
         # Publish code coverage on Code Climate
-        # https://github.com/brempavel/codeclimate-action
-        uses: brempavel/codeclimate-action@v3.0.0
-            # Add Code Climate secret key
+        # https://github.com/paambaati/codeclimate-action
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
