@@ -10,4 +10,4 @@ setup: install publish
 test:
 	npm test
 test-coverage:
-	npx test --coverage
+	npx test -- --coverage
