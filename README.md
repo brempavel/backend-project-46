@@ -5,4 +5,4 @@
 [![Node CI](https://github.com/brempavel/backend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/brempavel/backend-project-46/actions/workflows/nodejs.yml)
 
 ### Flat JSON:
-<a href="https://asciinema.org/a/ecS9qyqH397Qp4YrdywXZSYi1" target="_blank"><img src="https://asciinema.org/a/ecS9qyqH397Qp4YrdywXZSYi1.svg" /></a>
+<a href="https://asciinema.org/a/612C8Ai1uXCCodgU8xOBWvzw2" target="_blank"><img src="https://asciinema.org/a/612C8Ai1uXCCodgU8xOBWvzw2.svg" /></a>
