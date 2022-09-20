@@ -17,3 +17,7 @@ beforeAll(() => {
 test('plain JSON', () => {
   expect(genDiff(getPath('file1.json'), getPath('file2.json'))).toEqual(expected);
 });
+
+// test('yaml/yml', () => {
+
+// })
