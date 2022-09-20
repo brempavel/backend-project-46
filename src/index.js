@@ -1,40 +1,46 @@
-import fs from 'fs';
 import _ from 'lodash';
+import fs from 'fs';
+import parse from './parse.js';
 
-export default (filepath1, filepath2) => {
-  const data1 = JSON.parse(fs.readFileSync(filepath1, 'utf-8'));
-  const data2 = JSON.parse(fs.readFileSync(filepath2, 'utf-8'));
+export default (filepath1, filepath2, options) => {
+  const data1 = fs.readFileSync(filepath1, 'utf-8');
+  const data2 = fs.readFileSync(filepath2, 'utf-8');
+  const extension = filepath1.split('.').pop();
+  const parsedData1 = parse(data1, extension);
+  const parsedData2 = parse(data2, extension);
 
-  const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
+  console.log(parsedData1, parsedData2);
+
+  const keys = _.sortBy(_.union(Object.keys(parsedData1), Object.keys(parsedData2)));
 
   const hasProperty = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
   const rawResult = keys.map((key) => {
-    if (hasProperty(data1, key) && hasProperty(data2, key)) {
-      if (data1[key] === data2[key]) {
+    if (hasProperty(parsedData1, key) && hasProperty(parsedData2, key)) {
+      if (parsedData1[key] === parsedData2[key]) {
         return {
           name: key,
           type: 'unchanged',
-          value: data1[key],
+          value: parsedData1[key],
         };
       }
       return {
         name: key,
         type: 'changed',
-        value1: data1[key],
-        value2: data2[key],
+        value1: parsedData1[key],
+        value2: parsedData2[key],
       };
     }
-    if (!hasProperty(data1, key)) {
+    if (!hasProperty(parsedData1, key)) {
       return {
         name: key,
         type: 'added',
-        value: data2[key],
+        value: parsedData2[key],
       };
     }
     return {
       name: key,
       type: 'removed',
-      value: data1[key],
+      value: parsedData1[key],
     };
   });
   const result = rawResult.reduce((acc, string) => {
