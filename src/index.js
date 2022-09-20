@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import fs from 'fs';
-import parse from './parse.js';
+import parse from './parsers.js';
 
 export default (filepath1, filepath2) => {
   const data1 = fs.readFileSync(filepath1, 'utf-8');
