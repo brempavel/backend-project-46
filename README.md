@@ -6,3 +6,6 @@
 
 ### Flat JSON:
 <a href="https://asciinema.org/a/JJubSq764DPCdwmebs3Hkn3NK" target="_blank"><img src="https://asciinema.org/a/JJubSq764DPCdwmebs3Hkn3NK.svg" /></a>
+
+### Flat YAML/YML:
+<a href="https://asciinema.org/a/11v59kuKTHI0LnW4mLX76ev80" target="_blank"><img src="https://asciinema.org/a/11v59kuKTHI0LnW4mLX76ev80.svg" /></a>
