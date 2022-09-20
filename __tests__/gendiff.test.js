@@ -18,6 +18,6 @@ test('plain JSON', () => {
   expect(genDiff(getPath('file1.json'), getPath('file2.json'))).toEqual(expected);
 });
 
-// test('yaml/yml', () => {
-
-// })
+test('yaml/yml', () => {
+  expect(genDiff(getPath('file1.yaml'), getPath('file2.yaml'))).toEqual(expected);
+});
