@@ -9,8 +9,6 @@ export default (filepath1, filepath2) => {
   const parsedData1 = parse(data1, extension);
   const parsedData2 = parse(data2, extension);
 
-  console.log(parsedData1, parsedData2);
-
   const keys = _.sortBy(_.union(Object.keys(parsedData1), Object.keys(parsedData2)));
 
   const hasProperty = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
