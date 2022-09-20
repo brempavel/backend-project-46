@@ -2,7 +2,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import parse from './parse.js';
 
-export default (filepath1, filepath2, options) => {
+export default (filepath1, filepath2) => {
   const data1 = fs.readFileSync(filepath1, 'utf-8');
   const data2 = fs.readFileSync(filepath2, 'utf-8');
   const extension = filepath1.split('.').pop();
