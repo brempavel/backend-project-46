@@ -1,4 +1,4 @@
-import { test, expect } from '@jest/globals';
+import { test, expect, beforeAll } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
@@ -9,7 +9,11 @@ const __dirname = path.dirname(__filename);
 
 const getPath = (name) => path.join(__dirname, '..', '__fixtures__', name);
 
+let expected;
+beforeAll(() => {
+  expected = fs.readFileSync(getPath('result.txt'), 'utf-8');
+});
+
 test('plain JSON', () => {
-  const expected = fs.readFileSync(getPath('plainResult.txt'), 'utf-8');
   expect(genDiff(getPath('file1.json'), getPath('file2.json'))).toEqual(expected);
 });
