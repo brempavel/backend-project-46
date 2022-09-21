@@ -7,5 +7,11 @@
 ### Flat JSON:
 <a href="https://asciinema.org/a/JJubSq764DPCdwmebs3Hkn3NK" target="_blank"><img src="https://asciinema.org/a/JJubSq764DPCdwmebs3Hkn3NK.svg" /></a>
 
+### JSON:
+<a href="https://asciinema.org/a/9JvjDPJr57Adbje7EviZjgkgL" target="_blank"><img src="https://asciinema.org/a/9JvjDPJr57Adbje7EviZjgkgL.svg" /></a>
+
 ### Flat YAML/YML:
 <a href="https://asciinema.org/a/11v59kuKTHI0LnW4mLX76ev80" target="_blank"><img src="https://asciinema.org/a/11v59kuKTHI0LnW4mLX76ev80.svg" /></a>
+
+### YAML/YML:
+<a href="https://asciinema.org/a/esgI2Kk7gS8udcTTntWHFf7XS" target="_blank"><img src="https://asciinema.org/a/esgI2Kk7gS8udcTTntWHFf7XS.svg" /></a>
