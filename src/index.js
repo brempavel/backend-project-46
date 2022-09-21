@@ -1,64 +1,66 @@
 import _ from 'lodash';
 import fs from 'fs';
 import parse from './parsers.js';
+import stylish from './stylish.js';
 
-export default (filepath1, filepath2) => {
-  const data1 = fs.readFileSync(filepath1, 'utf-8');
-  const data2 = fs.readFileSync(filepath2, 'utf-8');
-  const extension = filepath1.split('.').pop();
-  const parsedData1 = parse(data1, extension);
-  const parsedData2 = parse(data2, extension);
+const hasProperty = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
 
-  const keys = _.sortBy(_.union(Object.keys(parsedData1), Object.keys(parsedData2)));
+const getDiff = (oldParsedData, newParsedData) => {
+  const oldKeys = Object.keys(oldParsedData);
+  const newKeys = Object.keys(newParsedData);
+  const keys = _.sortBy(_.union(oldKeys, newKeys));
 
-  const hasProperty = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
-  const rawResult = keys.map((key) => {
-    if (hasProperty(parsedData1, key) && hasProperty(parsedData2, key)) {
-      if (parsedData1[key] === parsedData2[key]) {
-        return {
-          name: key,
-          type: 'unchanged',
-          value: parsedData1[key],
-        };
-      }
+  const result = keys.map((key) => {
+    if (!hasProperty(oldParsedData, key)) {
       return {
-        name: key,
-        type: 'changed',
-        value1: parsedData1[key],
-        value2: parsedData2[key],
+        key,
+        type: 'added',
+        value: newParsedData[key],
       };
     }
-    if (!hasProperty(parsedData1, key)) {
+    if (!hasProperty(newParsedData, key)) {
       return {
-        name: key,
-        type: 'added',
-        value: parsedData2[key],
+        key,
+        type: 'removed',
+        value: oldParsedData[key],
+      };
+    }
+
+    if (_.isObject(oldParsedData[key]) && _.isObject(newParsedData[key])) {
+      return {
+        key,
+        type: 'nested',
+        value: getDiff(oldParsedData[key], newParsedData[key]),
+      };
+    }
+    if (oldParsedData[key] === newParsedData[key]) {
+      return {
+        key,
+        type: 'unchanged',
+        value: oldParsedData[key],
       };
     }
     return {
-      name: key,
-      type: 'removed',
-      value: parsedData1[key],
+      key,
+      type: 'changed',
+      oldValue: oldParsedData[key],
+      newValue: newParsedData[key],
     };
   });
-  const result = rawResult.reduce((acc, string) => {
-    switch (string.type) {
-      case 'added':
-        acc += `  + ${string.name}: ${string.value}\n`;
-        break;
-      case 'removed':
-        acc += `  - ${string.name}: ${string.value}\n`;
-        break;
-      case 'changed':
-        acc += `  - ${string.name}: ${string.value1}\n  + ${string.name}: ${string.value2}\n`;
-        break;
-      case 'unchanged':
-        acc += `    ${string.name}: ${string.value}\n`;
-        break;
-      default:
-        break;
-    }
-    return acc;
-  }, '');
-  return `{\n${result}}`;
+  return result;
+};
+
+export default (filepath1, filepath2) => {
+  const oldData = fs.readFileSync(filepath1, 'utf-8');
+  const newData = fs.readFileSync(filepath2, 'utf-8');
+
+  const oldExtension = filepath1.split('.').pop();
+  const newExtension = filepath2.split('.').pop();
+
+  const oldParsedData = parse(oldData, oldExtension);
+  const newParsedData = parse(newData, newExtension);
+
+  const rawDifference = getDiff(oldParsedData, newParsedData);
+  const difference = stylish(rawDifference);
+  return difference;
 };
