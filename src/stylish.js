@@ -16,7 +16,7 @@ const getValue = (element, depth) => {
 };
 
 export default function stylish(rawDifference, depth = 1) {
-  const indentation = getIndentation(depth).slice(0, getIndentation(depth).length - 2);
+  const indentation = getIndentation(depth).slice(0, -2);
   const difference = rawDifference.map((element) => {
     switch (element.type) {
       case 'added':
