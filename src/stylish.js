@@ -2,12 +2,12 @@ import _ from 'lodash';
 
 const getIndentation = (depth, step = 4) => ' '.repeat(depth * step);
 
-const getValue = (item, depth) => {
-  if (!_.isObject(item)) {
-    return item;
+const getValue = (element, depth) => {
+  if (!_.isObject(element)) {
+    return element;
   }
   const indentation = getIndentation(depth);
-  const difference = Object.entries(item).map(([key, value]) => `${indentation}${key}: ${getValue(value, depth + 1)}`);
+  const difference = Object.entries(element).map(([key, value]) => `${indentation}${key}: ${getValue(value, depth + 1)}`);
   return [
     '{',
     ...difference,

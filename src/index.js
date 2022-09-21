@@ -10,7 +10,7 @@ const getDiff = (oldParsedData, newParsedData) => {
   const newKeys = Object.keys(newParsedData);
   const keys = _.sortBy(_.union(oldKeys, newKeys));
 
-  const result = keys.map((key) => {
+  const elements = keys.map((key) => {
     if (!hasProperty(oldParsedData, key)) {
       return {
         key,
@@ -47,7 +47,7 @@ const getDiff = (oldParsedData, newParsedData) => {
       newValue: newParsedData[key],
     };
   });
-  return result;
+  return elements;
 };
 
 export default (filepath1, filepath2) => {
