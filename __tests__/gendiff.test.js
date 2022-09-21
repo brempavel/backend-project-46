@@ -14,7 +14,7 @@ beforeAll(() => {
   expected = fs.readFileSync(getPath('result.txt'), 'utf-8');
 });
 
-test('plain JSON', () => {
+test('JSON', () => {
   expect(genDiff(getPath('file1.json'), getPath('file2.json'))).toEqual(expected);
 });
 
