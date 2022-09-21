@@ -1,17 +1,13 @@
 import yaml from 'js-yaml';
 
 export default (data, extension) => {
-  let parsedData;
   switch (extension) {
     case 'json':
-      parsedData = JSON.parse(data);
-      break;
+      return JSON.parse(data);
     case 'yml':
     case 'yaml':
-      parsedData = yaml.load(data);
-      break;
+      return yaml.load(data);
     default:
-      break;
+      throw new Error(`Unknown extension: ${extension}`);
   }
-  return parsedData;
 };
