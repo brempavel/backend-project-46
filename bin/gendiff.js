@@ -12,11 +12,11 @@ program
   .argument('<filepath2>')
   .version('0.0.1')
   .option('-f, --format <type>', 'output format', 'stylish')
-  .action((path1, path2) => {
+  .action((path1, path2, options) => {
     const cwd = process.cwd();
     const filepath1 = path.resolve(cwd, path1);
     const filepath2 = path.resolve(cwd, path2);
 
-    console.log(genDiff(filepath1, filepath2));
+    console.log(genDiff(filepath1, filepath2, options.format));
   });
 program.parse();
