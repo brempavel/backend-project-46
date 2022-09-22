@@ -14,6 +14,13 @@ export default (filepath1, filepath2, format = 'stylish') => {
   const newParsedData = parse(newData, newExtension);
 
   const rawDifference = getDiff(oldParsedData, newParsedData);
-  const difference = stylish(rawDifference);
+  let difference;
+  switch (format) {
+    case 'stylish':
+      difference = stylish(rawDifference);
+      break;
+    default:
+      throw new Error(`Unknown format type: ${format}`);
+  }
   return difference;
 };
