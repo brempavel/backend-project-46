@@ -15,7 +15,7 @@ export default function plain(rawDifference, parentElement = '') {
         return `Property '${path}' was added with value: ${getValue(element.value)}`;
       case 'removed':
         return `Property '${path}' was removed`;
-      case 'changed':
+      case 'updated':
         return `Property '${path}' was updated. From ${getValue(element.oldValue)} to ${getValue(element.newValue)}`;
       case 'unchanged':
         return null;

@@ -23,7 +23,7 @@ export default function stylish(rawDifference, depth = 1) {
         return `${indentation}+ ${element.key}: ${getValue(element.value, depth + 1)}`;
       case 'removed':
         return `${indentation}- ${element.key}: ${getValue(element.value, depth + 1)}`;
-      case 'changed':
+      case 'updated':
         return `${indentation}- ${element.key}: ${getValue(element.oldValue, depth + 1)}\n${indentation}+ ${element.key}: ${getValue(element.newValue, depth + 1)}`;
       case 'unchanged':
         return `${indentation}  ${element.key}: ${getValue(element.value, depth + 1)}`;

@@ -39,7 +39,7 @@ export default function getDiff(oldParsedData, newParsedData) {
     }
     return {
       key,
-      type: 'changed',
+      type: 'updated',
       oldValue: oldParsedData[key],
       newValue: newParsedData[key],
     };
