@@ -16,7 +16,6 @@ export default function getDiff(oldParsedData, newParsedData) {
     if (!hasProperty(newParsedData, key)) {
       return { key, type: 'removed', value: oldParsedData[key] };
     }
-
     if (_.isObject(oldParsedData[key]) && _.isObject(newParsedData[key])) {
       return {
         key,
