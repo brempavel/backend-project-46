@@ -9,7 +9,6 @@ const getKeys = (oldData, newData) => {
 
 export default function getDiff(oldParsedData, newParsedData) {
   const keys = getKeys(oldParsedData, newParsedData);
-
   const elements = keys.map((key) => {
     if (!hasProperty(oldParsedData, key)) {
       return { key, type: 'added', value: newParsedData[key] };
