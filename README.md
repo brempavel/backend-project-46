@@ -8,6 +8,11 @@ Options:
   -V, --version        output the version number
   -f, --format <type>  output format (default: "stylish")
   -h, --help           display help for command
+
+Format types:
+  --format stylish (default output)
+  --format plain (plain text output)
+  --format json (raw json output)
 ```
 
 ### Installation:
