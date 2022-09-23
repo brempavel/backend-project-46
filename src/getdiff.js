@@ -1,11 +1,14 @@
 import _ from 'lodash';
 
 const hasProperty = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
+const getKeys = (oldData, newData) => {
+  const oldKeys = Object.keys(oldData);
+  const newKeys = Object.keys(newData);
+  return _.sortBy(_.union(oldKeys, newKeys));
+};
 
 export default function getDiff(oldParsedData, newParsedData) {
-  const oldKeys = Object.keys(oldParsedData);
-  const newKeys = Object.keys(newParsedData);
-  const keys = _.sortBy(_.union(oldKeys, newKeys));
+  const keys = getKeys(oldParsedData, newParsedData);
 
   const elements = keys.map((key) => {
     if (!hasProperty(oldParsedData, key)) {
