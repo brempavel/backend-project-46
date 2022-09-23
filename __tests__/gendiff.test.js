@@ -9,15 +9,18 @@ const __dirname = path.dirname(__filename);
 
 const getPath = (name) => path.join(__dirname, '..', '__fixtures__', name);
 
-let expected;
-beforeAll(() => {
-  expected = fs.readFileSync(getPath('result.txt'), 'utf-8');
-});
-
 test('JSON', () => {
+  const expected = fs.readFileSync(getPath('resultStylish.txt'), 'utf-8');
   expect(genDiff(getPath('file1.json'), getPath('file2.json'))).toEqual(expected);
 });
 
 test('yaml/yml', () => {
+  const expected = fs.readFileSync(getPath('resultStylish.txt'), 'utf-8');
   expect(genDiff(getPath('file1.yaml'), getPath('file2.yaml'))).toEqual(expected);
+});
+
+test('plain format', () => {
+  const expected = fs.readFileSync(getPath('resultPlain.txt'), 'utf-8');
+  expect(genDiff(getPath('file1.yaml'), getPath('file2.yaml'), 'plain')).toEqual(expected);
+  expect(genDiff(getPath('file1.yaml'), getPath('file2.yaml'), 'plain')).toEqual(expected);
 });
