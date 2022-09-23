@@ -21,6 +21,6 @@ test('yaml/yml', () => {
 
 test('plain format', () => {
   const expected = fs.readFileSync(getPath('resultPlain.txt'), 'utf-8');
-  expect(genDiff(getPath('file1.yaml'), getPath('file2.yaml'), 'plain')).toEqual(expected);
+  expect(genDiff(getPath('file1.json'), getPath('file2.json'), 'plain')).toEqual(expected);
   expect(genDiff(getPath('file1.yaml'), getPath('file2.yaml'), 'plain')).toEqual(expected);
 });
