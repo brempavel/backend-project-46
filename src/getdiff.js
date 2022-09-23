@@ -20,7 +20,7 @@ export default function getDiff(oldParsedData, newParsedData) {
       return {
         key,
         type: 'nested',
-        value: getDiff(oldParsedData[key], newParsedData[key]),
+        children: getDiff(oldParsedData[key], newParsedData[key]),
       };
     }
     if (oldParsedData[key] !== newParsedData[key]) {

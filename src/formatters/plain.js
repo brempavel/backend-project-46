@@ -20,7 +20,7 @@ export default function plain(rawDifference, parentElement = '') {
       case 'unchanged':
         return null;
       case 'nested':
-        return plain(element.value, path);
+        return plain(element.children, path);
       default:
         throw new Error(`Unknown element type: '${element.type}'`);
     }
