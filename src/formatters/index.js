@@ -7,7 +7,9 @@ export default (rawDifference, formatName) => {
       return stylish(rawDifference);
     case 'plain':
       return plain(rawDifference);
+    case 'json':
+      return JSON.stringify(rawDifference);
     default:
-      throw new Error(`Unknown format type: ${formatName}`);
+      throw new Error(`Unknown format type: '${formatName}'`);
   }
 };

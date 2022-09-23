@@ -30,7 +30,7 @@ export default function stylish(rawDifference, depth = 1) {
       case 'nested':
         return `${indentation}  ${element.key}: ${stylish(element.value, depth + 1)}`;
       default:
-        throw new Error(`Unknown element type: ${element.type}`);
+        throw new Error(`Unknown element type: '${element.type}'`);
     }
   }, []);
   return [

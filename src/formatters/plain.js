@@ -22,7 +22,7 @@ export default function plain(rawDifference, parentElement = '') {
       case 'nested':
         return plain(element.value, path);
       default:
-        throw new Error(`Unknown element type: ${element.type}`);
+        throw new Error(`Unknown element type: '${element.type}'`);
     }
   }, []);
   return difference.filter((element) => element !== null).join('\n');
