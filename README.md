@@ -1,3 +1,15 @@
+## Description:
+```
+Usage: gendiff [options] <filepath1> <filepath2>
+
+Compares two configuration files and shows a difference.
+
+Options:
+  -V, --version        output the version number
+  -f, --format <type>  output format (default: "stylish")
+  -h, --help           display help for command
+```
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/brempavel/backend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/brempavel/backend-project-46/actions)
 <a href="https://codeclimate.com/github/brempavel/backend-project-46/maintainability"><img src="https://api.codeclimate.com/v1/badges/57649de50aa844093844/maintainability" /></a>
