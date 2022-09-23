@@ -1,7 +1,7 @@
 import fs from 'fs';
 import parse from './parsers.js';
 import getDiff from './getdiff.js';
-import format from './formatters/index.js'
+import format from './formatters/index.js';
 
 export default (filepath1, filepath2, formatName = 'stylish') => {
   const oldData = fs.readFileSync(filepath1, 'utf-8');
@@ -15,6 +15,6 @@ export default (filepath1, filepath2, formatName = 'stylish') => {
 
   const rawDifference = getDiff(oldParsedData, newParsedData);
   const difference = format(rawDifference, formatName);
-  
+
   return difference;
 };

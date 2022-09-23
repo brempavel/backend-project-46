@@ -1,7 +1,7 @@
-import stylish from "./stylish.js";
-import plain from "./plain.js";
+import stylish from './stylish.js';
+import plain from './plain.js';
 
-export default function(rawDifference, formatName) {
+export default (rawDifference, formatName) => {
   switch (formatName) {
     case 'stylish':
       return stylish(rawDifference);
