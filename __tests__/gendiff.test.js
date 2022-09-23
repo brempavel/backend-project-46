@@ -24,3 +24,13 @@ test('plain format', () => {
   expect(genDiff(getPath('file1.json'), getPath('file2.json'), 'plain')).toEqual(expected);
   expect(genDiff(getPath('file1.yaml'), getPath('file2.yaml'), 'plain')).toEqual(expected);
 });
+
+test('JSON format', () => {
+  const expected = fs.readFileSync(getPath('resultJSON.txt'), 'utf-8');
+  expect(genDiff(getPath('file1.json'), getPath('file2.json'), 'json')).toEqual(expected);
+  expect(genDiff(getPath('file1.yaml'), getPath('file2.yaml'), 'json')).toEqual(expected);
+});
+
+test('unknown format', () => {
+  expect(() => genDiff(getPath('file1.json'), getPath('file2.json'), 'unknown')).toThrowError();
+});
