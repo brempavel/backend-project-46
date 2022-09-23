@@ -10,4 +10,4 @@ export default (rawDifference, formatName) => {
     default:
       throw new Error(`Unknown format type: ${formatName}`);
   }
-}
+};
