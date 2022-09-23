@@ -9,18 +9,10 @@ export default function getDiff(oldParsedData, newParsedData) {
 
   const elements = keys.map((key) => {
     if (!hasProperty(oldParsedData, key)) {
-      return {
-        key,
-        type: 'added',
-        value: newParsedData[key],
-      };
+      return { key, type: 'added', value: newParsedData[key] };
     }
     if (!hasProperty(newParsedData, key)) {
-      return {
-        key,
-        type: 'removed',
-        value: oldParsedData[key],
-      };
+      return { key, type: 'removed', value: oldParsedData[key] };
     }
 
     if (_.isObject(oldParsedData[key]) && _.isObject(newParsedData[key])) {
@@ -30,19 +22,15 @@ export default function getDiff(oldParsedData, newParsedData) {
         value: getDiff(oldParsedData[key], newParsedData[key]),
       };
     }
-    if (oldParsedData[key] === newParsedData[key]) {
+    if (oldParsedData[key] !== newParsedData[key]) {
       return {
         key,
-        type: 'unchanged',
-        value: oldParsedData[key],
+        type: 'updated',
+        oldValue: oldParsedData[key],
+        newValue: newParsedData[key],
       };
     }
-    return {
-      key,
-      type: 'updated',
-      oldValue: oldParsedData[key],
-      newValue: newParsedData[key],
-    };
+    return { key, type: 'unchanged', value: oldParsedData[key] };
   });
   return elements;
 }
