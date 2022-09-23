@@ -15,3 +15,6 @@
 
 ### YAML/YML:
 <a href="https://asciinema.org/a/esgI2Kk7gS8udcTTntWHFf7XS" target="_blank"><img src="https://asciinema.org/a/esgI2Kk7gS8udcTTntWHFf7XS.svg" /></a>
+
+### --format plain:
+<a href="https://asciinema.org/a/vLiL37vZyI45oGQ48WIM3Pc7S" target="_blank"><img src="https://asciinema.org/a/vLiL37vZyI45oGQ48WIM3Pc7S.svg" /></a>
