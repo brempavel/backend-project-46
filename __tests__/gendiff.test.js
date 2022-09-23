@@ -34,3 +34,7 @@ test('JSON format', () => {
 test('unknown format', () => {
   expect(() => genDiff(getPath('file1.json'), getPath('file2.json'), 'unknown')).toThrowError();
 });
+
+test('unknown extension', () => {
+  expect(() => genDiff(getPath('file1.unknown'), getPath('file2.unknown'))).toThrowError();
+});
