@@ -10,6 +10,18 @@ Options:
   -h, --help           display help for command
 ```
 
+### Installation:
+```
+git clone https://github.com/brempavel/backend-project-46.git
+
+cd backend-project-46
+
+make install
+
+make link
+```
+> make link may require sudo
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/brempavel/backend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/brempavel/backend-project-46/actions)
 <a href="https://codeclimate.com/github/brempavel/backend-project-46/maintainability"><img src="https://api.codeclimate.com/v1/badges/57649de50aa844093844/maintainability" /></a>
