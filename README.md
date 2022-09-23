@@ -18,3 +18,6 @@
 
 ### --format plain:
 <a href="https://asciinema.org/a/vLiL37vZyI45oGQ48WIM3Pc7S" target="_blank"><img src="https://asciinema.org/a/vLiL37vZyI45oGQ48WIM3Pc7S.svg" /></a>
+
+### --format json:
+<a href="https://asciinema.org/a/AzPnPFh2GYeSeSNZKVImjuV04" target="_blank"><img src="https://asciinema.org/a/AzPnPFh2GYeSeSNZKVImjuV04.svg" /></a>
